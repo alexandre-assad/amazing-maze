@@ -21,4 +21,19 @@ class TestLabyrinth(unittest.TestCase):
 
     def test_display(self):
         Lab1 = Labyrinth(3)
-        pass
+        Lab1.wall_break("Right",0,0)
+        Lab1.wall_break("Bottom",0,1)
+        Lab1.wall_break("Right",1,1)
+        Lab1.wall_break("Top",1,2)
+        Lab1.wall_break("Bottom",1,2)
+        Lab1.wall_break("Left",2,2)
+        Lab1.wall_break("Left",2,1)
+        Lab1.wall_break("Top",2,0)
+        self.assertEqual(Lab1.display(),"""
+# #####
+#. .#.#
+### # #
+#.#. .#
+# ### #
+#. . . 
+#######""")

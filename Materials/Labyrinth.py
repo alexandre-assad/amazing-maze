@@ -31,4 +31,8 @@ class Labyrinth:
         """
         distance = {"Top":[x-1,y],"Bottom":[x+1,y],"Left":[x,y-1],"Right":[x,y+1]}
         opposite_direction = {"Top":"Bottom","Bottom":"Top","Left":"Right","Right":"Left"}
-        self.board[x][y].walls[direction], self.board[distance[direction][0]][distance[direction][1]].walls[opposite_direction[direction]] = False, False
+
+        try:
+            self.board[x][y].walls[direction], self.board[distance[direction][0]][distance[direction][1]].walls[opposite_direction[direction]] = False, False
+        except:
+            pass
