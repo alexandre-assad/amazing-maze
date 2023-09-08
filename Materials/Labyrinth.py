@@ -1,4 +1,4 @@
-
+from Materials.Case import Case
 
 
 class Labyrinth:
@@ -9,4 +9,11 @@ class Labyrinth:
 
 
     def setup(self):
-        pass
+        board = []
+        sub_board = []
+        for li in range(self.length):
+            for col in range(self.length):
+                sub_board.append(Case(li,col))
+            board.append(sub_board)
+            sub_board = []
+        return board
