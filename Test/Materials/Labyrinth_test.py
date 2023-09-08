@@ -14,7 +14,8 @@ class TestLabyrinth(unittest.TestCase):
     def test_wall_break(self):
         Lab1 = Labyrinth(3)
         Lab1.wall_break("Right",0,0)
-        self.assertEqual([Lab1.board[0,0].walls["Right"],Lab1.board[0][1]["Left"]],[False,False])
+        self.assertEqual([Lab1.board[0][0].walls["Right"],Lab1.board[0][1].walls["Left"]],[False,False])
+        self.assertEqual(Lab1.board[0][1].walls["Right"],True)
 
 
 
