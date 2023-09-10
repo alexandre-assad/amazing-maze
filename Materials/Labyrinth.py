@@ -77,3 +77,5 @@ class Labyrinth:
         return "\n"+display_str[:len(display_str)-1]
     
 
+    def case_unvisited_arround(x:int,y:int) ->list:
+        pass

@@ -19,6 +19,13 @@ class TestLabyrinth(unittest.TestCase):
 
 
 
+    def test_case_unvisited_arround(self):
+        Lab1 = Labyrinth(3)
+        Lab1.board[0][1].visited = True
+        self.assertEqual(Lab1.case_unvisited_arround(0,0),[[1,0]])
+        self.assertEqual(Lab1.case_unvisited_arround(1,1),[[1,0],[1,1],[2,1]])
+
+
     def test_display(self):
         Lab1 = Labyrinth(3)
         Lab1.wall_break("Right",0,0)
