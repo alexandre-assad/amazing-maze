@@ -77,5 +77,26 @@ class Labyrinth:
         return "\n"+display_str[:len(display_str)-1]
     
 
-    def case_unvisited_arround(x:int,y:int) ->list:
-        pass
+    def case_unvisited_arround(self,x:int,y:int) ->list:
+        case_arround = []
+        try:
+            if self.board[x-1][y].visited == False and x-1 >=0:
+                case_arround.append([x-1,y])
+        except:
+            pass
+        try:
+            if self.board[x+1][y].visited == False and x+1 <self.length:
+                case_arround.append([x+1,y])
+        except:
+            pass
+        try:
+            if self.board[x][y-1].visited == False and y-1 >=0:
+                case_arround.append([x,y-1])
+        except:
+            pass
+        try:
+            if self.board[x][y+1].visited == False and y+1 <self.length:
+                case_arround.append([x,y+1])
+        except:
+            pass
+        return case_arround

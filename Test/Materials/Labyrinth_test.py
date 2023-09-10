@@ -23,7 +23,7 @@ class TestLabyrinth(unittest.TestCase):
         Lab1 = Labyrinth(3)
         Lab1.board[0][1].visited = True
         self.assertEqual(Lab1.case_unvisited_arround(0,0),[[1,0]])
-        self.assertEqual(Lab1.case_unvisited_arround(1,1),[[1,0],[1,1],[2,1]])
+        self.assertEqual(Lab1.case_unvisited_arround(1,1),[[2,1],[1,0],[1,2]])
 
 
     def test_display(self):
