@@ -4,7 +4,10 @@ from Utils.txt_utils import *
 
 def txt_to_labyrinth(file:str):
     str_labyrinth = read_txt(file)
-
+    i=0
+    while str_labyrinth[i] != "#":
+        str_labyrinth = str_labyrinth[1:]
+        i+=1
     length = 0
     while True:
         if str_labyrinth[length] != "\n":
