@@ -53,17 +53,38 @@ class Labyrinth:
 
        
         perm = "test"
-        for li in range(self.length):
-            for col in range(self.length):
+        if self.length%2 != 0:
+            for li in range(self.length):
+                for col in range(self.length):
 
-                display_array[li*2+1][col*2+1] = "."
+                    display_array[li*2+1][col*2+1] = "."
+                    if perm == "test":
+                        distanceDisplay={"Top":[[li*2,col*2],[li*2,col*2+1],[li*2,col*2+2]],"Bottom":[[li*2+2,col*2],[li*2+2,col*2+1],[li*2+2,col*2+2]],"Left":[[li*2,col*2],[li*2+1,col*2],[li*2+2,col*2]],"Right":[[li*2,col*2+2],[li*2+1,col*2+2],[li*2+2,col*2+2]]}
+                        for key,value in self.board[li][col].walls.items():
+                            if value == True:
+                                display_array[distanceDisplay[key][0][0]][distanceDisplay[key][0][1]], display_array[distanceDisplay[key][1][0]][distanceDisplay[key][1][1]],display_array[distanceDisplay[key][2][0]][distanceDisplay[key][2][1]] = "#","#","#"
+                            else:
+                                display_array[distanceDisplay[key][1][0]][distanceDisplay[key][1][1]] = " "
+                        perm = "untest"
+                    else:
+                        perm = "test"
+        
+        else:
+            for li in range(self.length):
+                for col in range(self.length):
+
+                    display_array[li*2+1][col*2+1] = "."
+                    if perm == "test":
+                        distanceDisplay={"Top":[[li*2,col*2],[li*2,col*2+1],[li*2,col*2+2]],"Bottom":[[li*2+2,col*2],[li*2+2,col*2+1],[li*2+2,col*2+2]],"Left":[[li*2,col*2],[li*2+1,col*2],[li*2+2,col*2]],"Right":[[li*2,col*2+2],[li*2+1,col*2+2],[li*2+2,col*2+2]]}
+                        for key,value in self.board[li][col].walls.items():
+                            if value == True:
+                                display_array[distanceDisplay[key][0][0]][distanceDisplay[key][0][1]], display_array[distanceDisplay[key][1][0]][distanceDisplay[key][1][1]],display_array[distanceDisplay[key][2][0]][distanceDisplay[key][2][1]] = "#","#","#"
+                            else:
+                                display_array[distanceDisplay[key][1][0]][distanceDisplay[key][1][1]] = " "
+                        perm = "untest"
+                    else:
+                        perm = "test"
                 if perm == "test":
-                    distanceDisplay={"Top":[[li*2,col*2],[li*2,col*2+1],[li*2,col*2+2]],"Bottom":[[li*2+2,col*2],[li*2+2,col*2+1],[li*2+2,col*2+2]],"Left":[[li*2,col*2],[li*2+1,col*2],[li*2+2,col*2]],"Right":[[li*2,col*2+2],[li*2+1,col*2+2],[li*2+2,col*2+2]]}
-                    for key,value in self.board[li][col].walls.items():
-                        if value == True:
-                            display_array[distanceDisplay[key][0][0]][distanceDisplay[key][0][1]], display_array[distanceDisplay[key][1][0]][distanceDisplay[key][1][1]],display_array[distanceDisplay[key][2][0]][distanceDisplay[key][2][1]] = "#","#","#"
-                        else:
-                            display_array[distanceDisplay[key][1][0]][distanceDisplay[key][1][1]] = " "
                     perm = "untest"
                 else:
                     perm = "test"

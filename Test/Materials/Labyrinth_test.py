@@ -45,12 +45,13 @@ class TestLabyrinth(unittest.TestCase):
 #. . . 
 #######""")
 
-"""
-# #####
-#. .#.#
-### # #
-#.#. .#
-# ### #
-#. . . 
-#######
-"""
+        Lab2 = Labyrinth(2)
+        Lab2.wall_break("Right",0,0)
+        Lab2.wall_break("Bottom",0,1)
+        Lab2.wall_break("Left",1,1)
+        self.assertEqual(Lab2.display(),"""
+# ###
+#. .#
+### #
+#. . 
+#####""")
