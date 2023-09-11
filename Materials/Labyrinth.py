@@ -4,6 +4,7 @@ class Labyrinth:
     def __init__(self,length):
         self.length = length
         self.board = self.setup()
+        self.krustal_cell = {}
 
 
     def setup(self):
@@ -18,6 +19,7 @@ class Labyrinth:
             for col in range(self.length):
                 sub_board.append(Case(li,col))
                 sub_board[col].k_number = n_kruskal
+                self.krustal_cell[str(n_kruskal)] = [[li,col]]
                 n_kruskal += 1
             board.append(sub_board)
             sub_board = []
