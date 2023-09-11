@@ -3,8 +3,8 @@ class Labyrinth:
 
     def __init__(self,length):
         self.length = length
-        self.board = self.setup()
-        self.krustal_cell = {}
+        self.board = self.setup()[0]
+        self.kruskal_cell = self.setup()[1]
 
 
     def setup(self):
@@ -15,16 +15,17 @@ class Labyrinth:
         board = []
         sub_board = []
         n_kruskal = 0
+        kruskal_cell = {}
         for li in range(self.length):
             for col in range(self.length):
                 sub_board.append(Case(li,col))
                 sub_board[col].k_number = n_kruskal
-                self.krustal_cell[str(n_kruskal)] = [[li,col]]
+                kruskal_cell[str(n_kruskal)] = [[li,col]]
                 n_kruskal += 1
             board.append(sub_board)
             sub_board = []
         #The board is closed, so now we can see it as a box of little closed box, to create the labyrinth we'll destroy Case.wall
-        return board
+        return board, kruskal_cell
     
     def wall_break(self,direction:str,x:int,y:int):
         """
