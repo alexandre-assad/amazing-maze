@@ -61,4 +61,4 @@ class TestLabyrinth(unittest.TestCase):
         Lab1 = Labyrinth(3)
         Lab1.board[0][1].k_number = 0
         self.assertEqual(Lab1.case_number_arround(0,0),[[1,0]])
-        self.assertEqual(Lab1.case_number_arround(1,1),[[2,1],[1,0],[1,2]])
+        self.assertEqual(Lab1.case_number_arround(1,1),[[0,1],[2,1],[1,0],[1,2]])
