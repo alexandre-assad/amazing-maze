@@ -15,7 +15,7 @@ def txt_to_labyrinth(file:str):
         else:
             break
 
-    lab1 = Labyrinth(int((length-1)/2))
+    lab1 = Labyrinth(int((length)/2))
 
     list_lab = list(str_labyrinth)
     new_list = []
