@@ -7,3 +7,4 @@ class Case:
         self.y = y
         self.visited = False
         self.walls = {"Top":True,"Left":True,"Right":True,"Bottom":True}
+        self.k_number = 0

@@ -9,6 +9,7 @@ class TestLabyrinth(unittest.TestCase):
         self.assertEqual(Lab1.board[0][0].visited,False)
         self.assertEqual([Lab1.board[2][3].x,Lab1.board[2][3].y],[2,3])
         self.assertEqual(Lab1.board[4][7].walls["Top"],True)
+        self.assertEqual(Lab1.board[1][3].k_number,12)
 
 
     def test_wall_break(self):

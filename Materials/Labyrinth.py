@@ -13,9 +13,12 @@ class Labyrinth:
         """
         board = []
         sub_board = []
+        n_kruskal = 0
         for li in range(self.length):
             for col in range(self.length):
                 sub_board.append(Case(li,col))
+                sub_board[col].k_number = n_kruskal
+                n_kruskal += 1
             board.append(sub_board)
             sub_board = []
         #The board is closed, so now we can see it as a box of little closed box, to create the labyrinth we'll destroy Case.wall
