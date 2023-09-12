@@ -8,3 +8,4 @@ class Case:
         self.visited = False
         self.walls = {"Top":True,"Left":True,"Right":True,"Bottom":True}
         self.k_number = 0
+        self.in_way = False
