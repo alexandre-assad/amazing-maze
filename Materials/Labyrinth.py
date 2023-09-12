@@ -1,4 +1,5 @@
 from Materials.Case import Case
+import math
 class Labyrinth:
 
     def __init__(self,length):
@@ -22,6 +23,7 @@ class Labyrinth:
                 sub_board.append(Case(li,col))
                 sub_board[col].k_number = n_kruskal
                 kruskal_cell[str(n_kruskal)] = [[li,col]]
+                sub_board[col].distance_to_end = math.sqrt((li+1-self.length)**2+(col+1-self.length)**2)
                 n_kruskal += 1
             board.append(sub_board)
             sub_board = []
