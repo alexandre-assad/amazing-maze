@@ -18,13 +18,4 @@ class TestBacktrackResolver(unittest.TestCase):
 #* *#o 
 #######""")
                          
-"""
-
-# #####
-#* o *#
-# ### #
-#o#* o#
-# ### #
-#* *#o 
-#######
-"""
+        write_txt(Lab1.displayResolver(),"lab3.resolver")
