@@ -5,7 +5,7 @@ from Utils.utils import *
 
 
 
-def backtrackResolver(file):
+def aStarResolver(file):
     Lab1 = txt_to_labyrinth(file)
     # Tant que toute les cases n'ont pas été découvertes
     #Je m'avance vers une case adjaçante si possible
@@ -29,9 +29,7 @@ def backtrackAlgo(laby,x,y):
         while True:
             if case_way_possible(laby,x,y) != []:
                 case_arround = case_way_possible(laby,x,y)
-                new_case = []
-                for case in case_arround:
-                    pass
+                case_arround.sort(key=lambda x: takeDistanceToEnd(laby,x))
                 laby = backtrackAlgo(laby,case_arround[0][0],case_arround[0][1])
                 if laby.resolve:
                     return laby
@@ -47,3 +45,7 @@ def case_way_possible(laby,x,y):
         if case in case_wall:
             case_possible.append(case)
     return case_possible
+
+
+def takeDistanceToEnd(laby,case:Case) ->int:
+    return laby.board[case[0]][case[1]].distance_to_end
