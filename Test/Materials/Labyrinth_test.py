@@ -63,3 +63,26 @@ class TestLabyrinth(unittest.TestCase):
         Lab1.board[0][1].k_number = 0
         self.assertEqual(Lab1.case_number_arround(0,0),[[1,0]])
         self.assertEqual(Lab1.case_number_arround(1,1),[[0,1],[2,1],[1,0],[1,2]])
+
+
+    def test_displayResolver(self):
+        Lab1 = Labyrinth(3)
+        Lab1.wall_break("Right",0,0)
+        Lab1.wall_break("Bottom",0,1)
+        Lab1.wall_break("Right",1,1)
+        Lab1.wall_break("Top",1,2)
+        Lab1.wall_break("Bottom",1,2)
+        Lab1.wall_break("Left",2,2)
+        Lab1.wall_break("Left",2,1)
+        Lab1.wall_break("Top",2,0)
+        
+        #Create way
+        Lab1.board[0][0].in_way,Lab1.board[0][1].in_way,Lab1.board[1][1].in_way,Lab1.board[1][2].in_way,Lab1.board[2][2].in_way = True,True,True,True,True
+        self.assertEqual(Lab1.displayResolver(),"""
+# #####
+#o o#*#
+### # #
+#*#o o#
+# ### #
+#* * o 
+#######""")
