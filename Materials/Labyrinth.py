@@ -1,4 +1,5 @@
 from Materials.Case import Case
+import math
 class Labyrinth:
 
     def __init__(self,length):
@@ -22,6 +23,7 @@ class Labyrinth:
                 sub_board.append(Case(li,col))
                 sub_board[col].k_number = n_kruskal
                 kruskal_cell[str(n_kruskal)] = [[li,col]]
+                sub_board[col].distance_to_end = math.sqrt((li+1-self.length)**2+(col+1-self.length)**2)
                 n_kruskal += 1
             board.append(sub_board)
             sub_board = []
@@ -96,7 +98,7 @@ class Labyrinth:
                 else:
                     perm = "test"
         
-        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = " ", " "
+        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = "o", "o"
 
         for ligne in display_array:
             for char in ligne:
@@ -173,7 +175,7 @@ class Labyrinth:
         Input : self
         Output : a string, the display of the labyrinth 
         """
-        #It is the same as display function, i just change l 181
+        #It is the same as display function, i just change l 181 and l 213
         display_str = ""
         display_array = []
         line = []
@@ -210,7 +212,10 @@ class Labyrinth:
             for li in range(self.length):
                 for col in range(self.length):
 
-                    display_array[li*2+1][col*2+1] = "."
+                    if self.board[li][col].in_way == True:
+                        display_array[li*2+1][col*2+1] = "o"
+                    else:
+                        display_array[li*2+1][col*2+1] = "*"
                     if perm == "test":
                         distanceDisplay={"Top":[[li*2,col*2],[li*2,col*2+1],[li*2,col*2+2]],"Bottom":[[li*2+2,col*2],[li*2+2,col*2+1],[li*2+2,col*2+2]],"Left":[[li*2,col*2],[li*2+1,col*2],[li*2+2,col*2]],"Right":[[li*2,col*2+2],[li*2+1,col*2+2],[li*2+2,col*2+2]]}
                         for key,value in self.board[li][col].walls.items():
@@ -226,7 +231,7 @@ class Labyrinth:
                 else:
                     perm = "test"
         
-        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = " ", " "
+        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = "o", "o"
 
         for ligne in display_array:
             for char in ligne:
