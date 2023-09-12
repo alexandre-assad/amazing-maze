@@ -1,7 +1,7 @@
 import random
-from Materials.Labyrinth import Labyrinth
-from Utils.txt_utils import *
-from Utils.utils import *
+from src.Materials.Labyrinth import Labyrinth
+from src.Utils.txt_utils import *
+from src.Utils.utils import *
 
 
 

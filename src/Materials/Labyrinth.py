@@ -1,4 +1,4 @@
-from Materials.Case import Case
+from src.Materials.Case import Case
 import math
 class Labyrinth:
 

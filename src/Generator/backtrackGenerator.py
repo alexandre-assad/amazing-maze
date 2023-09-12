@@ -1,9 +1,9 @@
 import random
-from Materials.Labyrinth import Labyrinth
-from Utils.os_utils import *
-from Utils.txt_utils import *
+from src.Materials.Labyrinth import Labyrinth
+from src.Utils.os_utils import *
+from src.Utils.txt_utils import *
 
-def backtrackGenerator(len,file):
+def backtrackGenerator(len,file,folder):
     Lab1 = Labyrinth(len)
     Lab1.board[0][0].visited = True
     # Tant que toute les cases n'ont pas été découvertes
@@ -15,7 +15,7 @@ def backtrackGenerator(len,file):
     compteur = 1
     Lab1.wall_break(getDirection(0,0,case_arround[0][0],case_arround[0][1]),0,0)
     Lab1 = backtrackAlgo(Lab1,case_arround[0][0],case_arround[0][1],compteur=compteur)
-    write_txt(Lab1.display(),file)
+    write_txt(Lab1.display(),file,folder)
 
 
 def backtrackAlgo(laby,x,y,compteur):

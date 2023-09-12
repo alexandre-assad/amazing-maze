@@ -1,6 +1,6 @@
-from Materials.Labyrinth import *
-from Materials.Case import *
-from Utils.txt_utils import *
+from src.Materials.Labyrinth import *
+from src.Materials.Case import *
+from src.Utils.txt_utils import *
 
 def txt_to_labyrinth(file:str):
     str_labyrinth = read_txt(file)

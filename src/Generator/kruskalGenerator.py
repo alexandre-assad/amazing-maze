@@ -1,10 +1,10 @@
 import random
 import math
-from Materials.Labyrinth import Labyrinth
-from Utils.os_utils import *
-from Utils.txt_utils import *
+from src.Materials.Labyrinth import Labyrinth
+from src.Utils.os_utils import *
+from src.Utils.txt_utils import *
 
-def kruskalGenerator(length:int,file:str) -> Labyrinth:
+def kruskalGenerator(length:int,file:str,folder:str) -> Labyrinth:
     Lab1 = Labyrinth(length)
     case_arround = Lab1.case_number_arround(0,0)
     random.shuffle(case_arround)
@@ -15,7 +15,7 @@ def kruskalGenerator(length:int,file:str) -> Labyrinth:
         if case_arround != []:
             random.shuffle(case_arround)        
             propagation(Lab1,[x,y],case_arround[0])
-    write_txt(Lab1.display(),file)
+    write_txt(Lab1.display(),file,folder)
     return Lab1
 
 def propagation(laby:Labyrinth,pos1:list,pos2:list) -> Labyrinth:
