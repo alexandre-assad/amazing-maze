@@ -11,6 +11,7 @@ class TestLabyrinth(unittest.TestCase):
         self.assertEqual(Lab1.board[4][7].walls["Top"],True)
         self.assertEqual(Lab1.board[1][3].k_number,12)
         self.assertEqual(Lab1.kruskal_cell["12"],[[1,3]])
+        self.assertEqual(Lab1.board[0][8].distance_to_end,9.0)
 
 
     def test_wall_break(self):
