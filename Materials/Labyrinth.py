@@ -98,7 +98,7 @@ class Labyrinth:
                 else:
                     perm = "test"
         
-        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = " ", " "
+        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = "o", "o"
 
         for ligne in display_array:
             for char in ligne:
@@ -231,7 +231,7 @@ class Labyrinth:
                 else:
                     perm = "test"
         
-        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = " ", " "
+        display_array[0][1],display_array[2*(self.length-1)+1][2*(self.length-1)+2] = "o", "o"
 
         for ligne in display_array:
             for char in ligne:

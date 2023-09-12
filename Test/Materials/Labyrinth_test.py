@@ -41,12 +41,12 @@ class TestLabyrinth(unittest.TestCase):
         Lab1.wall_break("Left",2,1)
         Lab1.wall_break("Top",2,0)
         self.assertEqual(Lab1.display(),"""
-# #####
+#o#####
 #. .#.#
 ### # #
 #.#. .#
 # ### #
-#. . . 
+#. . .o
 #######""")
 
         Lab2 = Labyrinth(2)
@@ -54,10 +54,10 @@ class TestLabyrinth(unittest.TestCase):
         Lab2.wall_break("Bottom",0,1)
         Lab2.wall_break("Left",1,1)
         self.assertEqual(Lab2.display(),"""
-# ###
+#o###
 #. .#
 ### #
-#. . 
+#. .o
 #####""")
 
     def test_case_number_arround(self):
@@ -81,12 +81,12 @@ class TestLabyrinth(unittest.TestCase):
         #Create way
         Lab1.board[0][0].in_way,Lab1.board[0][1].in_way,Lab1.board[1][1].in_way,Lab1.board[1][2].in_way,Lab1.board[2][2].in_way = True,True,True,True,True
         self.assertEqual(Lab1.displayResolver(),"""
-# #####
+#o#####
 #o o#*#
 ### # #
 #*#o o#
 # ### #
-#* * o 
+#* * oo
 #######""")
                          
     def test_case_wallopen_arround(self):
