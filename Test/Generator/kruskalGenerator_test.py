@@ -6,6 +6,7 @@ from Utils.utils import *
 class TestKruskalGenerator(unittest.TestCase):
 
     def test_backtrackGenerator(self):
+        kruskalGenerator(3,"lab3.txt")
         Lab2 = kruskalGenerator(100,"kruskal_lab_test.txt")
         self.assertEqual(read_txt("kruskal_lab_test.txt")[0:2],"\n#")
         Lab1 = txt_to_labyrinth("kruskal_lab_test.txt")

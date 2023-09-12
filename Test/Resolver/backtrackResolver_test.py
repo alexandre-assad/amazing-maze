@@ -7,12 +7,24 @@ from Utils.utils import *
 class TestBacktrackResolver(unittest.TestCase):
 
     def test_backtrackResolver(self):
-        Lab1 = txt_to_labyrinth("lab3")
+        Lab1 = backtrackResolver("lab3.txt")
+
         self.assertEqual(Lab1.displayResolver(),"""
 # #####
-#o o#*#
-### # #
-#*#o o#
+#o o o#
 # ### #
-#* * o
+#*#* o#
+# ### #
+#* *#o 
 #######""")
+                         
+"""
+
+# #####
+#* o *#
+# ### #
+#o#* o#
+# ### #
+#* *#o 
+#######
+"""

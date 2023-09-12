@@ -5,6 +5,7 @@ class Labyrinth:
         self.length = length
         self.board = self.setup()[0]
         self.kruskal_cell = self.setup()[1]
+        self.resolve = False
 
 
     def setup(self):
