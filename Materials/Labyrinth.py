@@ -154,6 +154,18 @@ class Labyrinth:
         return case_arround
     
 
+    def case_wallopen_arround(self,x:int,y:int) ->list:
+        case_arround = []
+        if self.board[x][y].walls["Top"] == False:
+            case_arround.append([x-1,y])
+        if self.board[x][y].walls["Bottom"] == False:
+            case_arround.append([x+1,y])
+        if self.board[x][y].walls["Right"] == False:
+            case_arround.append([x,y+1])
+        if self.board[x][y].walls["Left"] == False:
+            case_arround.append([x,y-1])
+        return case_arround
+
 
     def displayResolver(self) -> str:
         """

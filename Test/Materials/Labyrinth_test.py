@@ -86,3 +86,8 @@ class TestLabyrinth(unittest.TestCase):
 # ### #
 #* * o 
 #######""")
+                         
+    def test_case_wallopen_arround(self):
+        Lab1 = Labyrinth(3)
+        Lab1.wall_break("Right",0,0)
+        self.assertEqual(Lab1.case_wallopen_arround(0,0),[[0,1]])
