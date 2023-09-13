@@ -1,3 +1,4 @@
+import math
 class Case:
     
     def __init__(self, x, y):
@@ -9,3 +10,5 @@ class Case:
         self.k_number = 0
         self.in_way = False
         self.distance_to_end = 0.0
+        self.f_cost = math.inf
+        self.parent = 0

@@ -7,40 +7,63 @@ class AStarResolver:?
 """
 
 
-def aStarResolver(file: str) -> Labyrinth:
-    Lab1 = txt_to_labyrinth(file)
+def aStarResolver(folder,file: str) -> Labyrinth:
+    Lab1 = txt_to_labyrinth(folder,file)
     # Tant que toute les cases n'ont pas été découvertes
     # Je m'avance vers une case adjaçante si possible
     # Si toute les cases autours ont été vu, je reviens en arrière
     # Si compteur arrive à la fin, je return lab
-
+    Lab1.board[0][0].in_way = True
     Lab1 = backtrackAlgo(Lab1, 0, 0)
     return Lab1
 
 
 def backtrackAlgo(laby: Labyrinth, x: int, y: int) -> Labyrinth:
-    laby.board[x][y].in_way = True
-    laby.board[x][y].visited = True
+    #algorithm inspired by Sebastian Lague video
+    open = [] #The set of nodes to be evaluated
+    #open will be in the following structure [[node,parent],...]
+    closed = [] #The set of nodes arleady evaluated
+    #closed will be in the following structure [[node,parent],...]
+    open.append(laby.board[x][y]) #Add start to open
 
-    if [x, y] == [laby.length - 1, laby.length - 1]:
-        laby.resolve = True
-        return laby
+    while True: #loop
+        open.sort(key=lowestFCost) 
+        current = open[0] #current = node in Open with lowest f_cost
+        open.remove(current)
+        closed.append(current) #add current to closed
 
-    elif case_way_possible(laby, x, y) == []:
-        laby.board[x][y].in_way = False
-        return laby
+        if current.x == laby.length-1 and current.y == laby.length -1:
+            #if current is the target node
+            return create_path(laby,current)
+            #return the path
+        
+        neighbours = case_way_possible(laby,current.x,current.y)
+        #for each neighbour of the current node
+        if neighbours != []:
+            for neighbour in neighbours:
 
-    else:
-        while True:
-            if case_way_possible(laby, x, y) != []:
-                case_around = case_way_possible(laby, x, y)
-                case_around.sort(key=lambda x: takeDistanceToEnd(laby, x))
-                laby = backtrackAlgo(laby, case_around[0][0], case_around[0][1])
-                if laby.resolve:
-                    return laby
-            else:
-                laby.board[x][y].in_way = False
-                return laby
+                neighbour_case = laby.board[neighbour[0]][neighbour[1]]
+
+                #if neighbour is in closed
+                if neighbour_case in closed:
+                    #pass to the next neighbour
+                    continue
+                    
+                #if new path to neighbour is shorter OR neighbour is not in Open
+                if neighbour_case.f_cost < current.f_cost or neighbour_case not in open:
+                    #set f_cost of neighbour
+                    #set parent of neighbour to current
+                    #if neighbour not in open
+                    #add neighbour in open
+                    laby.board[neighbour[0]][neighbour[1]].parent = current
+                    neighbour_case.parent = current
+
+                    laby.board[neighbour[0]][neighbour[1]].f_cost = takeDistanceToEnd(laby,neighbour_case) + takeDistanceToStart(laby,neighbour_case)
+                    neighbour_case.f_cost = takeDistanceToEnd(laby,neighbour_case) + takeDistanceToStart(laby,neighbour_case)
+                    
+                    if neighbour_case not in open:
+                        open.append(neighbour_case)
+    
 
 
 def case_way_possible(laby: Labyrinth, x: int, y: int) -> list[list]:
@@ -53,5 +76,27 @@ def case_way_possible(laby: Labyrinth, x: int, y: int) -> list[list]:
     return case_possible
 
 
+def create_path(laby:Labyrinth,current:Case) -> Labyrinth:
+    """
+    Input : a Labyrinth and a Case
+    Basic code: While exploring case and parenting of case, we mark them in the way in the labyrinth
+    Output : The labyrinth modified with the path
+    """
+    case = current
+    while case != laby.board[0][0]:
+        laby.board[case.x][case.y].in_way = True
+        case = case.parent
+    return laby
+
+
+
+def takeDistanceToStart(laby:Labyrinth,case:Case) ->int:
+    return math.sqrt((case.x-0)**2+(case.y-0)**2)
+
+
+
 def takeDistanceToEnd(laby: Labyrinth, case: Case) -> int:
-    return laby.board[case[0]][case[1]].distance_to_end
+    return laby.board[case.x][case.y].distance_to_end
+
+def lowestFCost(case:Case):
+    return case.f_cost

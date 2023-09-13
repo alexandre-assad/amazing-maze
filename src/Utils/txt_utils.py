@@ -1,8 +1,8 @@
 from src.Utils.os_utils import *
 
 
-def read_txt(path: str) -> str:
-    f = open(path_txt(path), "r")
+def read_txt(folder:str,path: str) -> str:
+    f = open(path_txt(folder,path), "r")
     return f.read()
 
 

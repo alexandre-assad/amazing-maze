@@ -1,14 +1,15 @@
 import unittest
-from Materials.Labyrinth import Labyrinth
-from Generator.kruskalGenerator import *
-from Resolver.aStarResolver import *
-from Utils.utils import *
-from Utils.txt_utils import *
+from src.Materials.Labyrinth import Labyrinth
+from src.Generator.kruskalGenerator import *
+from src.Resolver.aStarResolver import *
+from src.Utils.utils import *
+from src.Utils.txt_utils import *
 
 
 class TestAStarResolver(unittest.TestCase):
+
     def test_aStarResolver(self):
-        Lab1 = aStarResolver("lab5.txt")
+        Lab1 = aStarResolver("test","lab5.txt")
         self.assertEqual(
             Lab1.displayResolver(),
             """
@@ -20,6 +21,6 @@ class TestAStarResolver(unittest.TestCase):
 #* *#oo
 #######""",
         )
-        write_txt(Lab1.displayResolver(), "lab5_resolver.txt")
-        kruskalGenerator(10, "lab6.txt")
-        write_txt(aStarResolver("lab6.txt").displayResolver(), "lab6_resolver.txt")
+        write_txt(Lab1.displayResolver(), "lab5_resolver.txt","test")
+        kruskalGenerator(10, "lab6.txt","test")
+        write_txt(aStarResolver("test","lab6.txt").displayResolver(), "lab6_resolver.txt","test")
