@@ -4,7 +4,7 @@ from src.Utils.os_utils import *
 from src.Utils.txt_utils import *
 
 
-def backtrackGenerator(len, file, folder):
+def backtrackGenerator(len: int, file: str, folder: str) -> None:
     Lab1 = Labyrinth(len)
     Lab1.board[0][0].visited = True
     case_arround = Lab1.case_unvisited_arround(0, 0)
@@ -16,14 +16,18 @@ def backtrackGenerator(len, file, folder):
     )
     write_txt(Lab1.display(), file, folder)
 
+    return None
 
-def backtrackAlgo(laby, x, y, compteur):
+
+def backtrackAlgo(laby: Labyrinth, x: int, y: int, compteur: int) -> Labyrinth:
     laby.board[x][y].visited = True
     compteur += 1
     if compteur == laby.length**2:
         return laby
+
     elif laby.case_unvisited_arround(x, y) == []:
         return laby
+
     else:
         while True:
             if laby.case_unvisited_arround(x, y) != []:
@@ -35,6 +39,7 @@ def backtrackAlgo(laby, x, y, compteur):
                 laby = backtrackAlgo(
                     laby, case_arround[0][0], case_arround[0][1], compteur=compteur
                 )
+
             else:
                 return laby
 

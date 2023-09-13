@@ -10,14 +10,18 @@ def kruskalGenerator(length: int, file: str, folder: str) -> Labyrinth:
     case_arround = Lab1.case_number_arround(0, 0)
     random.shuffle(case_arround)
     propagation(Lab1, [0, 0], case_arround[0])
+    
     while len(Lab1.kruskal_cell["0"]) < Lab1.length**2:
+        
         x, y = random.randint(0, Lab1.length - 1), random.randint(0, Lab1.length - 1)
         case_arround = Lab1.case_number_arround(x, y)
+        
         if case_arround != []:
             random.shuffle(case_arround)
             propagation(Lab1, [x, y], case_arround[0])
+            
     write_txt(Lab1.display(), file, folder)
-    
+
     return Lab1
 
 
@@ -38,7 +42,7 @@ def propagation(laby: Labyrinth, pos1: list, pos2: list) -> None:
         laby.kruskal_cell[str(number)].append([pos_propaged[0], pos_propaged[1]])
 
     laby.kruskal_cell[str(other_number)] = []
-    
+
     return None
 
 
