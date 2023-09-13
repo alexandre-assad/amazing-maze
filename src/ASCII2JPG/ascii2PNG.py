@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw
-from utils.colors import Colors as c
-from utils.txtExtract import parseTxt
+from src.ASCII2JPG.utils.colors import Colors as c
+from src.ASCII2JPG.utils.txtExtract import parseTxt
 from collections import Counter
 
 TABLE = {
