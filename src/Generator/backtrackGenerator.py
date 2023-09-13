@@ -5,14 +5,17 @@ from src.Utils.txt_utils import *
 
 
 def backtrackGenerator(len: int, file: str, folder: str) -> None:
+    """
+    This function takes a length and a file name and generates a labyrinth
+    """
     Lab1 = Labyrinth(len)
     Lab1.board[0][0].visited = True
-    case_arround = Lab1.case_unvisited_arround(0, 0)
-    random.shuffle(case_arround)
+    case_around = Lab1.case_unvisited_around(0, 0)
+    random.shuffle(case_around)
     compteur = 1
-    Lab1.wall_break(getDirection(0, 0, case_arround[0][0], case_arround[0][1]), 0, 0)
+    Lab1.wall_break(getDirection(0, 0, case_around[0][0], case_around[0][1]), 0, 0)
     Lab1 = backtrackAlgo(
-        Lab1, case_arround[0][0], case_arround[0][1], compteur=compteur
+        Lab1, case_around[0][0], case_around[0][1], compteur=compteur
     )
     write_txt(Lab1.display(), file, folder)
 
@@ -25,19 +28,19 @@ def backtrackAlgo(laby: Labyrinth, x: int, y: int, compteur: int) -> Labyrinth:
     if compteur == laby.length**2:
         return laby
 
-    elif laby.case_unvisited_arround(x, y) == []:
+    elif laby.case_unvisited_around(x, y) == []:
         return laby
 
     else:
         while True:
-            if laby.case_unvisited_arround(x, y) != []:
-                case_arround = laby.case_unvisited_arround(x, y)
-                random.shuffle(case_arround)
+            if laby.case_unvisited_around(x, y) != []:
+                case_around = laby.case_unvisited_around(x, y)
+                random.shuffle(case_around)
                 laby.wall_break(
-                    getDirection(x, y, case_arround[0][0], case_arround[0][1]), x, y
+                    getDirection(x, y, case_around[0][0], case_around[0][1]), x, y
                 )
                 laby = backtrackAlgo(
-                    laby, case_arround[0][0], case_arround[0][1], compteur=compteur
+                    laby, case_around[0][0], case_around[0][1], compteur=compteur
                 )
 
             else:

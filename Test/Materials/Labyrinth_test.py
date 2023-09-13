@@ -22,11 +22,11 @@ class TestLabyrinth(unittest.TestCase):
         )
         self.assertEqual(Lab1.board[0][1].walls["Right"], True)
 
-    def test_case_unvisited_arround(self):
+    def test_case_unvisited_around(self):
         Lab1 = Labyrinth(3)
         Lab1.board[0][1].visited = True
-        self.assertEqual(Lab1.case_unvisited_arround(0, 0), [[1, 0]])
-        self.assertEqual(Lab1.case_unvisited_arround(1, 1), [[2, 1], [1, 0], [1, 2]])
+        self.assertEqual(Lab1.case_unvisited_around(0, 0), [[1, 0]])
+        self.assertEqual(Lab1.case_unvisited_around(1, 1), [[2, 1], [1, 0], [1, 2]])
 
     def test_display(self):
         Lab1 = Labyrinth(3)
@@ -64,12 +64,12 @@ class TestLabyrinth(unittest.TestCase):
 #####""",
         )
 
-    def test_case_number_arround(self):
+    def test_case_number_around(self):
         Lab1 = Labyrinth(3)
         Lab1.board[0][1].k_number = 0
-        self.assertEqual(Lab1.case_number_arround(0, 0), [[1, 0]])
+        self.assertEqual(Lab1.case_number_around(0, 0), [[1, 0]])
         self.assertEqual(
-            Lab1.case_number_arround(1, 1), [[0, 1], [2, 1], [1, 0], [1, 2]]
+            Lab1.case_number_around(1, 1), [[0, 1], [2, 1], [1, 0], [1, 2]]
         )
 
     def test_displayResolver(self):
@@ -103,7 +103,7 @@ class TestLabyrinth(unittest.TestCase):
 #######""",
         )
 
-    def test_case_wallopen_arround(self):
+    def test_case_wallopen_around(self):
         Lab1 = Labyrinth(3)
         Lab1.wall_break("Right", 0, 0)
-        self.assertEqual(Lab1.case_wallopen_arround(0, 0), [[0, 1]])
+        self.assertEqual(Lab1.case_wallopen_around(0, 0), [[0, 1]])

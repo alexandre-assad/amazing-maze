@@ -78,8 +78,8 @@ class Labyrinth:
         display_array = []
         line = []
         
-        for i in range(2 * self.length + 1):
-            for j in range(2 * self.length + 1):
+        for _ in range(2 * self.length + 1):
+            for _ in range(2 * self.length + 1):
                 
                 line.append("#")
             display_array.append(line)
@@ -199,38 +199,47 @@ class Labyrinth:
             display_str += "\n"
         return "\n" + display_str[: len(display_str) - 1]
 
-    def case_unvisited_arround(self, x: int, y: int) -> list:
-        case_arround = []
+    def case_unvisited_around(self, x: int, y: int) -> list:
+        
+        case_around = []
         try:
             if self.board[x - 1][y].visited == False and x - 1 >= 0:
-                case_arround.append([x - 1, y])
+                case_around.append([x - 1, y])
         except:
             pass
         try:
             if self.board[x + 1][y].visited == False and x + 1 < self.length:
-                case_arround.append([x + 1, y])
+                case_around.append([x + 1, y])
         except:
             pass
         try:
             if self.board[x][y - 1].visited == False and y - 1 >= 0:
-                case_arround.append([x, y - 1])
+                case_around.append([x, y - 1])
         except:
             pass
         try:
             if self.board[x][y + 1].visited == False and y + 1 < self.length:
-                case_arround.append([x, y + 1])
+                case_around.append([x, y + 1])
         except:
             pass
-        return case_arround
+        
+        return case_around
 
-    def case_number_arround(self, x: int, y: int) -> list:
-        case_arround = []
+    def case_number_around(self, x: int, y: int) -> list:
+        """
+        Input : self, two int coordinate
+        Output : a list of list of int, the coordinate of the cells around the cell at the coordinate
+        
+        This function is used in the kruskal algorithm
+        """
+        
+        case_around = []
         try:
             if (
                 self.board[x - 1][y].k_number != self.board[x][y].k_number
                 and x - 1 >= 0
             ):
-                case_arround.append([x - 1, y])
+                case_around.append([x - 1, y])
         except:
             pass
         try:
@@ -238,7 +247,7 @@ class Labyrinth:
                 self.board[x + 1][y].k_number != self.board[x][y].k_number
                 and x + 1 < self.length
             ):
-                case_arround.append([x + 1, y])
+                case_around.append([x + 1, y])
         except:
             pass
         try:
@@ -246,7 +255,7 @@ class Labyrinth:
                 self.board[x][y - 1].k_number != self.board[x][y].k_number
                 and y - 1 >= 0
             ):
-                case_arround.append([x, y - 1])
+                case_around.append([x, y - 1])
         except:
             pass
         try:
@@ -254,22 +263,24 @@ class Labyrinth:
                 self.board[x][y + 1].k_number != self.board[x][y].k_number
                 and y + 1 < self.length
             ):
-                case_arround.append([x, y + 1])
+                case_around.append([x, y + 1])
         except:
             pass
-        return case_arround
+        return case_around
 
-    def case_wallopen_arround(self, x: int, y: int) -> list:
-        case_arround = []
+    def case_wallopen_around(self, x: int, y: int) -> list:
+        
+        case_around = []
         if self.board[x][y].walls["Top"] == False:
-            case_arround.append([x - 1, y])
+            case_around.append([x - 1, y])
         if self.board[x][y].walls["Bottom"] == False:
-            case_arround.append([x + 1, y])
+            case_around.append([x + 1, y])
         if self.board[x][y].walls["Right"] == False:
-            case_arround.append([x, y + 1])
+            case_around.append([x, y + 1])
         if self.board[x][y].walls["Left"] == False:
-            case_arround.append([x, y - 1])
-        return case_arround
+            case_around.append([x, y - 1])
+            
+        return case_around
 
     def displayResolver(self) -> str:
         

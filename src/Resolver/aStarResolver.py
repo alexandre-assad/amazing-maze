@@ -34,9 +34,9 @@ def backtrackAlgo(laby: Labyrinth, x: int, y: int) -> Labyrinth:
     else:
         while True:
             if case_way_possible(laby, x, y) != []:
-                case_arround = case_way_possible(laby, x, y)
-                case_arround.sort(key=lambda x: takeDistanceToEnd(laby, x))
-                laby = backtrackAlgo(laby, case_arround[0][0], case_arround[0][1])
+                case_around = case_way_possible(laby, x, y)
+                case_around.sort(key=lambda x: takeDistanceToEnd(laby, x))
+                laby = backtrackAlgo(laby, case_around[0][0], case_around[0][1])
                 if laby.resolve:
                     return laby
             else:
@@ -46,9 +46,9 @@ def backtrackAlgo(laby: Labyrinth, x: int, y: int) -> Labyrinth:
 
 def case_way_possible(laby: Labyrinth, x: int, y: int) -> list[list]:
     case_possible = []
-    case_wall = laby.case_wallopen_arround(x, y)
+    case_wall = laby.case_wallopen_around(x, y)
 
-    for case in laby.case_unvisited_arround(x, y):
+    for case in laby.case_unvisited_around(x, y):
         if case in case_wall:
             case_possible.append(case)
     return case_possible
