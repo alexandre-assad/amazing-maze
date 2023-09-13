@@ -6,9 +6,9 @@ from src.Utils.txt_utils import *
 What is utils?
 """
 
-def txt_to_labyrinth(file:str) -> Labyrinth:
+def txt_to_labyrinth(folder:str,file:str) -> Labyrinth:
     
-    str_labyrinth = read_txt(file)
+    str_labyrinth = read_txt(folder,file)
     i=0
     
     while str_labyrinth[i] != "#":
