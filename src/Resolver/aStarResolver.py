@@ -1,4 +1,3 @@
-import random
 from src.Materials.Labyrinth import Labyrinth
 from src.Utils.txt_utils import *
 from src.Utils.utils import *
