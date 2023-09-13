@@ -11,7 +11,6 @@ TABLE = {
     ".": c.WHITE,
 }
 
-
 def mazeConvert(asciiImage: list[str]) -> list[str]:
     """
     Cleans an ASCII image to have a correct format
@@ -57,7 +56,6 @@ def generate_ascii_image(asciiImage: list[str], isSolved: bool) -> Image:
     if isSolved:
         asciiImage=mazeConvert(asciiImage)
         
-
     for y, row in enumerate(asciiImage):
         for x, cell in enumerate(row):
             draw.rectangle(
@@ -71,7 +69,7 @@ def ascii2PNG(isSolved: bool, inputPath: str, outputPath) -> None:
     """
     This function takes a path from a txt that is intended to be asciiImage
     the inputPath should be the path towards the Image
-    and the outputPath is supposed to be where to save it
+    and the outputPath is supposed to be where to save it and add the name of the file
     isSolved is a bool to set, to generate a solved or unsolved maze.
     """
     generate_ascii_image(parseTxt(inputPath),isSolved).save(outputPath)

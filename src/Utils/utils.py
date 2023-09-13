@@ -2,10 +2,17 @@ from src.Materials.Labyrinth import *
 from src.Materials.Case import *
 from src.Utils.txt_utils import *
 
-def txt_to_labyrinth(file:str):
+"""
+What is utils?
+"""
+
+def txt_to_labyrinth(file:str) -> Labyrinth:
+    
     str_labyrinth = read_txt(file)
     i=0
+    
     while str_labyrinth[i] != "#":
+        
         str_labyrinth = str_labyrinth[1:]
         i+=1
     length = 0
@@ -18,8 +25,10 @@ def txt_to_labyrinth(file:str):
     lab1 = Labyrinth(int((length)/2))
 
     list_lab = list(str_labyrinth)
+    
     new_list = []
     sub_list = []
+    
     for i in range(len(list_lab)):
         if list_lab[i] != '\n':
             sub_list.append(list_lab[i])
@@ -29,7 +38,9 @@ def txt_to_labyrinth(file:str):
     new_list.append(["#"for i in range(length)])
 
     for i in range(1,2*lab1.length,2):
+        
         for j in range(1,2*lab1.length,2):
+            
             if new_list[i-1][j] == " ":
                 lab1.board[int((i-1)/2)][int((j-1)/2)].walls["Top"] = False
             if new_list[i+1][j] == " ":

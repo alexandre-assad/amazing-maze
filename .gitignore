@@ -1,3 +1,15 @@
-__pycache__
+__pycache__/
 .vscode
 *.pyc
+
+#Tests Pycache
+Test/Generator/__pycache__/
+Test/Materials/__pycache__/
+Test/Resolver/__pycache__/
+Test/Utils/__pycache__/
+
+#src Pycache
+src/Generator/__pycache__/
+src/Materials/__pycache__/
+src/Resolver/__pycache__/
+src/Utils/__pycache__/
