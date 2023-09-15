@@ -13,3 +13,4 @@ src/Generator/__pycache__/
 src/Materials/__pycache__/
 src/Resolver/__pycache__/
 src/Utils/__pycache__/
+src/layout/__pycache__/

@@ -5,6 +5,10 @@ from src.Utils.txt_utils import *
 
 
 def kruskalGenerator(length: int, file: str, folder: str) -> Labyrinth:
+    """
+    This function takes a length and a file name and generates a labyrinth
+    using a kruskal algorithm
+    """
     Lab1 = Labyrinth(length)
     case_around = Lab1.case_number_around(0, 0)
     random.shuffle(case_around)
@@ -24,6 +28,9 @@ def kruskalGenerator(length: int, file: str, folder: str) -> Labyrinth:
 
 
 def propagation(laby: Labyrinth, pos1: list, pos2: list) -> None:
+    """
+    This function takes a labyrinth and two positions and propagates the number
+    """
     laby.wall_break(getDirection(pos1[0], pos1[1], pos2[0], pos2[1]), pos1[0], pos1[1])
 
     number = min(
@@ -44,6 +51,9 @@ def propagation(laby: Labyrinth, pos1: list, pos2: list) -> None:
 
 
 def getDirection(x1: int, y1: int, x2: int, y2: int) -> str:
+    """
+    This function takes two positions and returns the direction between them
+    """
     if x1 > x2 and y1 == y2:
         return "Top"
     elif x1 < x2 and y1 == y2:

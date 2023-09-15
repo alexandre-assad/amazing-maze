@@ -2,11 +2,11 @@ from src.Materials.Labyrinth import *
 from src.Materials.Case import *
 from src.Utils.txt_utils import *
 
-"""
-What is utils?
-"""
 
 def txt_to_labyrinth(folder:str,file:str) -> Labyrinth:
+    """
+    This function takes a folder and a file name and returns a labyrinth
+    """
     
     str_labyrinth = read_txt(folder,file)
     i=0
