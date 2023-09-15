@@ -4,7 +4,7 @@ from src.layout.events import *
 def main() -> None:
     
     running, isSolved = True, False
-    mazeMenuIndex, methodMenuIndex, mazeSize= 0, 0, 10
+    mazeMenuIndex, methodMenuIndex, mazeSize= 0, 0, 40
     
     while running:
         
