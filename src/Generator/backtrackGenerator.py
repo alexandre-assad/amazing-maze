@@ -23,6 +23,10 @@ def backtrackGenerator(len: int, file: str, folder: str) -> None:
 
 
 def backtrackAlgo(laby: Labyrinth, x: int, y: int, compteur: int) -> Labyrinth:
+    """
+    This function takes a labyrinth, a position and a counter and generates a labyrinth
+    Using a backtracking algorithm
+    """
     laby.board[x][y].visited = True
     compteur += 1
     if compteur == laby.length**2:
@@ -48,6 +52,9 @@ def backtrackAlgo(laby: Labyrinth, x: int, y: int, compteur: int) -> Labyrinth:
 
 
 def getDirection(x1: int, y1: int, x2: int, y2: int) -> str:
+    """
+    This function takes two positions and returns the direction between them
+    """
     if x1 > x2 and y1 == y2:
         return "Top"
     elif x1 < x2 and y1 == y2:

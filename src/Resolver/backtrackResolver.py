@@ -4,30 +4,21 @@ from src.Utils.txt_utils import *
 from src.Utils.utils import *
 
 
-"""
-Notes Hugo:
-
-I can see 2 functions that has the same arguments.
-Isn't that worth the use of a class?
-https://github.com/hugo-andriamaromanana/Sudoku-Solver/blob/main/src/generator/backtrack.py
-For reference
-
-Seems more coherent to me
-"""
-
-
 def backtrackResolver(folder:str,file: str) -> Labyrinth:
+    """
+    This is the main function of the backtrackResolver
+    """
     Lab1 = txt_to_labyrinth(folder,file)
-    # Tant que toute les cases n'ont pas été découvertes
-    # Je m'avance vers une case adjaçante si possible
-    # Si toute les cases autours ont été vu, je reviens en arrière
-    # Si compteur arrive à la fin, je return lab
-
     Lab1 = backtrackAlgo(Lab1, 0, 0)
     return Lab1
 
 
 def backtrackAlgo(laby: Labyrinth, x: int, y: int):
+    """
+    This function takes a labyrinth, a position and a counter and generates a labyrinth
+    Using a backtracking algorithm
+    Inspired by Sebastian Lague video
+    """
     laby.board[x][y].in_way = True
     laby.board[x][y].visited = True
     
@@ -55,7 +46,9 @@ def backtrackAlgo(laby: Labyrinth, x: int, y: int):
 
 
 def case_way_possible(laby: Labyrinth, x: int, y: int):
-    
+    """
+    This function takes a labyrinth and a position and returns the possible way
+    """
     case_possible = []
     case_wall = laby.case_wallopen_around(x, y)
     for case in laby.case_unvisited_around(x, y):

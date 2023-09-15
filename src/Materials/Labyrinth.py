@@ -200,6 +200,10 @@ class Labyrinth:
         return "\n" + display_str[: len(display_str) - 1]
 
     def case_unvisited_around(self, x: int, y: int) -> list:
+        """
+        Input : self, two int coordinate
+        Output : a list of list of int, the coordinate of the cells around the cell at the coordinate
+        """
         
         case_around = []
         try:

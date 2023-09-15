@@ -2,24 +2,23 @@ from src.Materials.Labyrinth import Labyrinth
 from src.Utils.txt_utils import *
 from src.Utils.utils import *
 
-"""
-class AStarResolver:?
-"""
-
 
 def aStarResolver(folder,file: str) -> Labyrinth:
+    """
+    This is the main function of the aStarResolver
+    """
     Lab1 = txt_to_labyrinth(folder,file)
-    # Tant que toute les cases n'ont pas été découvertes
-    # Je m'avance vers une case adjaçante si possible
-    # Si toute les cases autours ont été vu, je reviens en arrière
-    # Si compteur arrive à la fin, je return lab
     Lab1.board[0][0].in_way = True
     Lab1 = backtrackAlgo(Lab1, 0, 0)
     return Lab1
 
 
 def backtrackAlgo(laby: Labyrinth, x: int, y: int) -> Labyrinth:
-    #algorithm inspired by Sebastian Lague video
+    """
+    This function takes a labyrinth, a position and a counter and generates a labyrinth
+    Using a backtracking algorithm
+    Inspired by Sebastian Lague video
+    """
     open = [] #The set of nodes to be evaluated
     #open will be in the following structure [[node,parent],...]
     closed = [] #The set of nodes arleady evaluated
@@ -67,6 +66,9 @@ def backtrackAlgo(laby: Labyrinth, x: int, y: int) -> Labyrinth:
 
 
 def case_way_possible(laby: Labyrinth, x: int, y: int) -> list[list]:
+    """
+    This function takes a labyrinth and a position and returns the list of the possible way
+    """
     case_possible = []
     case_wall = laby.case_wallopen_around(x, y)
 
@@ -89,14 +91,20 @@ def create_path(laby:Labyrinth,current:Case) -> Labyrinth:
     return laby
 
 
-
 def takeDistanceToStart(laby:Labyrinth,case:Case) ->int:
+    """
+    This function takes a labyrinth and a case and returns the distance between the case and the start
+    """
     return math.sqrt((case.x-0)**2+(case.y-0)**2)
 
-
-
 def takeDistanceToEnd(laby: Labyrinth, case: Case) -> int:
+    """
+    This function takes a labyrinth and a case and returns the distance between the case and the end
+    """
     return laby.board[case.x][case.y].distance_to_end
 
 def lowestFCost(case:Case):
+    """
+    This function takes a case and returns the f_cost of the case
+    """
     return case.f_cost

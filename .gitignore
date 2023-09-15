@@ -15,4 +15,7 @@ src/Resolver/__pycache__/
 src/Utils/__pycache__/
 src/layout/__pycache__/
 
-temp/
+Labyrinth_files/temp/generated_ascii.png
+Labyrinth_files/temp/generated.txt
+Labyrinth_files/temp/resolver_ascii.png
+Labyrinth_files/temp/resolver.txt
