@@ -16,8 +16,8 @@ Seems more coherent to me
 """
 
 
-def backtrackResolver(file: str) -> Labyrinth:
-    Lab1 = txt_to_labyrinth(file)
+def backtrackResolver(folder:str,file: str) -> Labyrinth:
+    Lab1 = txt_to_labyrinth(folder,file)
     # Tant que toute les cases n'ont pas été découvertes
     # Je m'avance vers une case adjaçante si possible
     # Si toute les cases autours ont été vu, je reviens en arrière

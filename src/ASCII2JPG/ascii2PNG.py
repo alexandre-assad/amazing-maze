@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw
-from src.ASCII2JPG.utils.colors import Colors as c
+from src.layout.colors import Colors as c
 from src.ASCII2JPG.utils.txtExtract import parseTxt
 from collections import Counter
 
@@ -42,7 +42,7 @@ def mazeConvert(asciiImage: list[str]) -> list[str]:
     return asciiImage
     
 
-def generate_ascii_image(asciiImage: list[str], isSolved: bool) -> Image:
+def generateAsciiImage(asciiImage: list[str], isSolved: bool) -> Image:
     """
     Generates an image from an ascii image
     """
@@ -72,5 +72,5 @@ def ascii2PNG(isSolved: bool, inputPath: str, outputPath) -> None:
     and the outputPath is supposed to be where to save it and add the name of the file
     isSolved is a bool to set, to generate a solved or unsolved maze.
     """
-    generate_ascii_image(parseTxt(inputPath),isSolved).save(outputPath)
+    generateAsciiImage(parseTxt(inputPath),isSolved).save(outputPath)
     
