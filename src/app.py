@@ -4,15 +4,17 @@ from src.layout.events import *
 def main() -> None:
     
     running, isSolved = True, False
-    mazeMenuIndex, methodMenuIndex, mazeSize= 0, 0, 50
+    mazeMenuIndex, methodMenuIndex, mazeSize= 0, 0, 10
     
     while running:
         
         drawScreen()
+        
         selectMazeGenerator(mazeMenuIndex)
         selectMethodMenu(methodMenuIndex)
         selectIsSolved(isSolved)
         selectMazeSize(mazeSize)
+        displayMaze(isSolved)
         
         events = pygame.event.get()
 

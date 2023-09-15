@@ -5,7 +5,7 @@ class Colors:
     RED= (255, 0, 0)
     GREEN= (0, 255, 0)
     BLUE= (0, 0, 255)
-    YELLOW= (255, 255, 0)
+    YELLOW= (255, 255, 1)
     ORANGE= (255, 165, 0)
     PURPLE= (128, 0, 128)
     PINK= (255, 192, 203)
@@ -35,3 +35,4 @@ class Colors:
     WOOD= (139, 69, 19)
     WOOD2= (210, 105, 30)
     MATRIX= (0, 143, 17)
+    NEONBLUE = (4, 6, 206)

@@ -1,5 +1,4 @@
 from src.layout.display import *
-import time
 
 def UP_DOWN_keys(event: pygame.event,default_menu_index: int) -> tuple[int, bool]:
     """
@@ -59,6 +58,9 @@ def plusminusMazeSize(event: pygame.event, mazeSize: int) -> int:
     
 
 def triggerSolved(event: pygame.event, isSolved: bool) -> bool:
+    """
+    Displays the maze as a PNG image
+    """
     if S_KEYDOWN(event):
         isSolved = not isSolved
     return isSolved

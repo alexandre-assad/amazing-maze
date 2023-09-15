@@ -97,7 +97,6 @@ def PLUS_KEYDOWN(event: pygame.event) -> bool:
     Returns True if the PLUS key is pressed.
     """
     if event.type == pygame.KEYDOWN and event.key == pygame.K_PLUS:
-        print('bruh')
         return True
     return False
 
@@ -114,7 +113,6 @@ def S_KEYDOWN(event: pygame.event) -> bool:
     Returns True if the S key is pressed.
     """
     if event.type == pygame.KEYDOWN and event.key == pygame.K_s:
-        print('bruh')
         return True
     return False
 

@@ -5,10 +5,10 @@ from collections import Counter
 
 TABLE = {
     "#": c.BLACK,
-    " ": c.WHITE,
-    "o": c.GREEN,
-    "*": c.RED,
-    ".": c.WHITE,
+    " ": c.DARK_GREY,
+    "o": c.YELLOW,
+    "*": c.NEONBLUE,
+    ".": c.DARK_GREY,
 }
 
 def mazeConvert(asciiImage: list[str]) -> list[str]:
@@ -46,8 +46,9 @@ def generateAsciiImage(asciiImage: list[str], isSolved: bool) -> Image:
     """
     Generates an image from an ascii image
     """
-    IMAGESIZE = (1000, 1000)
-    CELLSIZE = 1000 / len(asciiImage)
+    SETSIZE=500
+    IMAGESIZE = (SETSIZE, SETSIZE)
+    CELLSIZE = SETSIZE / len(asciiImage)
 
     image = Image.new("RGB", IMAGESIZE, c.WHITE)
 
