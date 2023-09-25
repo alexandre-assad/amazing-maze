@@ -1,6 +1,3 @@
-Certainly, here's a README template based on the information you provided:
-
-```markdown
 # Maze Generator and Solver
 
 This project utilizes a graphical user interface (GUI) to generate mazes in a text file using backtracking and Kruskal's algorithm. Additionally, it includes a solver that employs a backtracking algorithm and the A* search algorithm, inspired by a video by [Sebastian Lague](https://www.youtube.com/watch?v=-L-WgKMFuhE).
